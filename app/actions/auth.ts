@@ -33,6 +33,12 @@ export async function login(
   }
 
   try {
+    await signOut({ redirect: false });
+  } catch {
+    // Ignore error if not previously signed in
+  }
+
+  try {
     await signIn("credentials", {
       username,
       password,

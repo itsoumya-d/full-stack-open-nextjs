@@ -71,6 +71,9 @@ jobs:
             echo "✗ AUTH_SECRET missing" && exit 1
           fi
 
+      - name: Run unit tests
+        run: npm test
+
       - name: Run database migrations
         run: npx drizzle-kit push
         env:

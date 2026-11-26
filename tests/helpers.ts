@@ -40,6 +40,7 @@ export const loginUser = async (
   username: string,
   password: string,
 ) => {
+  await page.context().clearCookies()
   await page.goto("/login")
   await page.getByLabel("Username", { exact: true }).fill(username)
   await page.getByLabel("Password", { exact: true }).fill(password)

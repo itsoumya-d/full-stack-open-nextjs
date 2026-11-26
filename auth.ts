@@ -58,6 +58,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.name = user.name;
         token.username = user.username;
       }
 
@@ -65,6 +66,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     session({ session, token }) {
       session.user.id = typeof token.id === "string" ? token.id : "";
+      session.user.name = typeof token.name === "string" ? token.name : "";
       session.user.username =
         typeof token.username === "string" ? token.username : "";
 
